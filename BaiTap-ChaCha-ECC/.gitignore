@@ -1,0 +1,10 @@
+bin/
+obj/
+*.key
+*.pem
+*.enc
+*.dec
+*.tmp
+*.b64
+*.bin
+chacha_results.csv

@@ -1,0 +1,25 @@
+=== ChaCha20-Poly1305, file lớn (khối 1 MB, xử lý theo dòng) ===
+    MB    enc s    dec s  enc MB/s  dec MB/s identical
+   100     0.04     0.03      2409      3066 True
+  1000     0.41     0.32      2448      3137 True
+
+=== ECC / RSA, ms mỗi lần ===
+              keygen      ECDH      sign    verify
+ECC P-256     0.0126    0.0598    0.0226    0.0753
+ECC P-384     0.0967    0.2431    0.1369    0.3246
+ECC P-521     0.1070    0.2531    0.2022    0.3960
+RSA 2048           -         -    0.2628    0.0260
+RSA 3072           -         -    0.7404    0.0462
+
+=== Mã hóa lai ECDH + HKDF-SHA256 + ChaCha20-Poly1305 ===
+        32 byte -> giải mã đúng = True
+      1024 byte -> giải mã đúng = True
+   5242880 byte -> giải mã đúng = True
+
+=== SHA-512 thác đổ (đổi 1 bit, 10000 lần) ===
+trung bình 256.10/512 bit (50.02%), min 214, max 304
+
+=== Chữ ký: ECDSA ngẫu nhiên vs RFC 6979, cùng dữ liệu, cùng khóa, 5 lần ===
+ECDSA ngẫu nhiên: số chữ ký khác nhau = 5 / 5
+RFC 6979         : số chữ ký khác nhau = 1 / 5; xác minh đúng = True
+Vector RFC 6979 (P-256/SHA-256): True
